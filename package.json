@@ -1,0 +1,15 @@
+{
+  "name": "turbo-extension-codex-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Генератор пользовательских расширений Scratch 3.0 с AI-режимом и локальными шаблонами",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
