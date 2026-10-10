@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f6f4" />
+    <meta name="description" content="Создавайте расширения Scratch 3.0 с помощью ИИ или готовых локальных шаблонов." />
+    <title>Turbo Extension Studio — генератор расширений Scratch</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Главная навигация">
+        <a class="brand" href="#generator" data-view-link="generator" aria-label="Turbo Extension Studio — на главную">
+          <span class="brand-mark" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span class="brand-name">turbo<span>blocks</span><small>EXTENSION STUDIO</small></span>
+        </a>
+
+        <div class="workspace-caption">ВАША СТУДИЯ</div>
+        <nav class="side-nav">
+          <button class="nav-item is-active" type="button" data-view="generator" aria-label="Генератор">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.25 13.8 9l5.7 1.8-5.7 1.8L12 18.25l-1.8-5.65-5.7-1.8L10.2 9 12 3.25Z"/><path d="m19 15 .85 2.15L22 18l-2.15.85L19 21l-.85-2.15L16 18l2.15-.85L19 15Z"/></svg>
+            <span>Генератор</span><span class="nav-pill">AI</span>
+          </button>
+          <button class="nav-item" type="button" data-view="library" aria-label="Моя библиотека">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v13H4z"/><path d="M8 5.5v13M12 9h5M12 12h5M12 15h3"/></svg>
+            <span>Моя библиотека</span><span class="nav-count" id="libraryCount">0</span>
+          </button>
+          <button class="nav-item" type="button" data-view="templates" aria-label="Шаблоны">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1.5"/><rect x="14" y="4" width="6" height="6" rx="1.5"/><rect x="4" y="14" width="6" height="6" rx="1.5"/><path d="M17 14v6m-3-3h6"/></svg>
+            <span>Шаблоны</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+        <button class="connect-card" type="button" data-open-settings>
+          <span class="connect-orb"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.75 5.25L19 10l-5.25 1.75L12 17l-1.75-5.25L5 10l5.25-1.75L12 3Z"/><path d="m19 15 .75 2.25L22 18l-2.25.75L19 21l-.75-2.25L16 18l2.25-.75L19 15Z"/></svg></span>
+          <span class="connect-copy"><strong id="sidebarAiTitle">Подключите ИИ</strong><small id="sidebarAiText">Или начните бесплатно</small></span>
+          <svg class="connect-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="sidebar-profile">
+          <div class="profile-avatar">Т</div>
+          <div><strong>Твоя студия</strong><small>Локальный проект</small></div>
+          <button type="button" class="profile-more" aria-label="Настройки" data-open-settings><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>Рабочее пространство</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg><strong id="breadcrumbCurrent">Генератор</strong></div>
+          <div class="topbar-actions">
+            <button class="mode-badge" type="button" data-open-settings aria-live="polite"><span class="status-dot"></span><span id="modeLabel">Проверяем режим…</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg></button>
+            <div class="topbar-divider"></div>
+            <button class="avatar-small" type="button" aria-label="Открыть настройки" data-open-settings>Т</button>
+          </div>
+        </header>
+
+        <section class="page-view" id="generatorView">
+          <div class="page-heading">
+            <div>
+              <div class="eyebrow"><span class="eyebrow-line"></span>МАСТЕРСКАЯ РАСШИРЕНИЙ</div>
+              <h1>Ваша идея.<br class="heading-break" /> <span>Новые блоки.</span></h1>
+              <p>Опишите, что нужно проекту — соберём расширение Scratch 3.0<br class="desktop-break" /> с помощью ИИ или готового локального шаблона.</p>
+            </div>
+            <div class="heading-stamp"><span class="stamp-icon">S</span><span><strong>Scratch 3.0</strong><small>Совместимо с TurboWarp</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 16 8-8M8 8h8v8"/></svg></div>
+          </div>
+
+          <div class="workspace-grid">
+            <section class="prompt-column">
+              <div class="surface-card prompt-card">
+                <div class="card-kicker"><span class="step-number">01</span><span>ОПИШИТЕ ИДЕЮ</span><span class="kicker-rule"></span></div>
+                <div class="prompt-title-row"><div><h2>Что создаём?</h2><p>Расскажите, какие блоки вам нужны</p></div><span class="idea-spark" aria-hidden="true">✳</span></div>
+
+                <label class="field-label" for="promptInput">Идея расширения</label>
+                <div class="textarea-wrap">
+                  <textarea id="promptInput" maxlength="5000" spellcheck="true" placeholder="Например: создай расширение «Космос» с блоками для температуры планет, силы гравитации и веса объекта…">Создай расширение «Умная математика»: блоки для суммы, случайного числа и округления.</textarea>
+                  <div class="textarea-footer"><span><span class="mini-spark">✦</span> Чем точнее описание, тем лучше результат</span><span id="promptCounter">0 / 5000</span></div>
+                </div>
+
+                <div class="field-label category-label">Категория блоков <span>можно оставить авто</span></div>
+                <div class="category-grid" role="group" aria-label="Выберите категорию блоков">
+                  <button class="category-chip is-selected" type="button" data-category="auto"><span class="chip-dot dot-auto"></span>Авто</button>
+                  <button class="category-chip" type="button" data-category="math"><span class="chip-dot dot-math"></span>Математика</button>
+                  <button class="category-chip" type="button" data-category="text"><span class="chip-dot dot-text"></span>Текст</button>
+                  <button class="category-chip" type="button" data-category="game"><span class="chip-dot dot-game"></span>Игры</button>
+                  <button class="category-chip" type="button" data-category="utility"><span class="chip-dot dot-utility"></span>Утилиты</button>
+                  <button class="category-chip" type="button" data-category="sensor"><span class="chip-dot dot-sensor"></span>Датчики</button>
+                  <button class="category-chip" type="button" data-category="time"><span class="chip-dot dot-time"></span>Таймеры</button>
+                  <button class="category-chip" type="button" data-category="sound"><span class="chip-dot dot-sound"></span>Звук</button>
+                  <button class="category-chip" type="button" data-category="space"><span class="chip-dot dot-space"></span>Космос</button>
+                  <button class="category-chip" type="button" data-category="internet"><span class="chip-dot dot-internet"></span>Интернет</button>
+                </div>
+
+                <button class="generate-button" id="generateButton" type="button">
+                  <span class="button-spark">✳</span><span class="generate-label">Сгенерировать расширение</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                </button>
+                <div class="privacy-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 2.9 8.1 7 10 4.1-1.9 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg><span>Код можно проверить и скачать. Он не запускается в этой студии.</span></div>
+              </div>
+
+              <div class="quick-start-card">
+                <div class="quick-start-heading"><div><span class="quick-icon">✦</span><strong>Начните с примера</strong></div><button type="button" id="showTemplates">Все шаблоны <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div>
+                <div class="quick-prompt-list">
+                  <button class="quick-prompt" type="button" data-preset="math"><span class="quick-emoji emoji-violet">∑</span><span><strong>Умная математика</strong><small>Счёт, округление, случайные числа</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+                  <button class="quick-prompt" type="button" data-preset="text"><span class="quick-emoji emoji-coral">Aa</span><span><strong>Текстовые помощники</strong><small>Слова, буквы и переворот строки</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+                  <button class="quick-prompt" type="button" data-preset="time"><span class="quick-emoji emoji-pink">◷</span><span><strong>Игровой таймер</strong><small>Старт, сброс и прошедшие секунды</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+                </div>
+              </div>
+            </section>
+
+            <section class="result-panel" aria-label="Результат генерации">
+              <div class="result-header">
+                <div class="result-title-group"><div class="result-file-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.75h8l4 4V20.25H6z"/><path d="M14 3.75v4h4M9 12h6M9 15h6"/></svg></div><div><h2 id="resultName">Умная математика</h2><div class="result-subtitle"><span class="result-ready-dot"></span><span id="resultStatus">Черновик готов</span><span class="subtitle-separator">·</span><span id="resultCategory">Математика</span></div></div></div>
+                <div class="result-actions"><button class="icon-action" id="copyButton" type="button" aria-label="Скопировать код" title="Скопировать код"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h2"/></svg></button><button class="download-button" id="downloadButton" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 17v3h14v-3"/></svg><span>Скачать .js</span></button></div>
+              </div>
+              <div class="result-tabs" role="tablist" aria-label="Просмотр результата">
+                <button type="button" class="result-tab is-active" role="tab" aria-selected="true" data-tab="code"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4m8-8 4 4-4 4m-3-11-2 14"/></svg>Код <span class="tab-language">JS</span></button>
+                <button type="button" class="result-tab" role="tab" aria-selected="false" data-tab="blocks"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h7v5H4zM13 6h7v5h-7zM4 13h7v5H4zM13 13h7v5h-7z"/></svg>Блоки <span class="tab-count" id="blockCount">3</span></button>
+                <button type="button" class="result-tab" role="tab" aria-selected="false" data-tab="guide"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>Как запустить</button>
+                <div class="result-tab-spacer"></div><span class="result-version">Scratch 3.0</span>
+              </div>
+
+              <div class="result-content">
+                <section class="tab-content code-tab" id="codeTab" role="tabpanel">
+                  <div class="editor-toolbar"><div class="editor-file"><span class="js-file-mark">JS</span><span id="filenameLabel">umnaya_matematika.js</span><span class="unsaved-dot" title="Результат готов"></span></div><div class="editor-toolbar-right"><span class="editor-readonly"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>только просмотр</span><span class="editor-separator"></span><span class="editor-line-info" id="lineInfo">1 строк</span></div></div>
+                  <div class="code-scroll" id="codeScroll"><div class="line-numbers" id="lineNumbers" aria-hidden="true"></div><pre class="code-pre"><code id="codeContent"></code></pre></div>
+                  <div class="editor-footer"><div class="editor-language"><span class="language-dot"></span>JavaScript <span>·</span> UTF-8</div><div><span class="footer-check">✓</span> Код не выполняется автоматически</div></div>
+                </section>
+                <section class="tab-content blocks-tab" id="blocksTab" role="tabpanel" hidden>
+                  <div class="blocks-intro"><div><span class="blocks-eyebrow">ПАЛИТРА РАСШИРЕНИЯ</span><h3>Ваши новые блоки</h3><p>Так блоки будут выглядеть в списке расширений</p></div><span class="blocks-total" id="blocksTotal">03 блока</span></div>
+                  <div class="blocks-grid" id="blocksGrid"></div>
+                  <div class="blocks-hint"><span>✦</span><span>Каждый блок связан с JavaScript-кодом на вкладке «Код».</span></div>
+                </section>
+                <section class="tab-content guide-tab" id="guideTab" role="tabpanel" hidden>
+                  <div class="guide-heading"><span class="blocks-eyebrow">ПОСЛЕДНИЙ ШАГ</span><h3>Запустите в TurboWarp</h3><p>Пользовательские расширения можно тестировать в редакторе TurboWarp.</p></div>
+                  <div class="guide-steps">
+                    <div class="guide-step"><span class="guide-step-num">1</span><div><strong>Скачайте файл</strong><p>Нажмите «Скачать .js» и сохраните расширение на устройство.</p></div><span class="guide-step-icon">↓</span></div>
+                    <div class="guide-step"><span class="guide-step-num">2</span><div><strong>Откройте TurboWarp</strong><p>В редакторе откройте меню расширений и выберите пользовательское расширение.</p></div><span class="guide-step-icon">↗</span></div>
+                    <div class="guide-step"><span class="guide-step-num">3</span><div><strong>Загрузите код и проверьте</strong><p>Импортируйте файл и проверьте код перед запуском без песочницы.</p></div><span class="guide-step-icon">✓</span></div>
+                  </div>
+                  <div class="guide-warning"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2.9 19h18.2L12 3Z"/><path d="M12 9v4m0 3h.01"/></svg><span>Произвольные пользовательские расширения не загружаются напрямую на сайт Scratch. Используйте TurboWarp и проверяйте сторонний код.</span></div>
+                  <a class="open-editor-link" href="https://turbowarp.org/editor" target="_blank" rel="noopener noreferrer">Открыть редактор TurboWarp <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6m-1-5-9 9"/><path d="M18 13v6H5V6h6"/></svg></a>
+                </section>
+              </div>
+              <div class="result-bottom"><div class="bottom-lock"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 2.9 8.1 7 10 4.1-1.9 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg><span>Код отображается как текст и не запускается в браузере</span></div><button type="button" data-open-settings class="result-help">О режиме генерации <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></button></div>
+            </section>
+          </div>
+          <footer class="page-footer"><span>Сделано для любопытных умов <span class="footer-heart">♥</span></span><span>TurboBlocks Studio <span class="footer-dot">·</span> версия 1.0</span></footer>
+        </section>
+
+        <section class="page-view secondary-view" id="secondaryView" hidden>
+          <div class="secondary-heading"><div><div class="eyebrow"><span class="eyebrow-line"></span>ВАШЕ ПРОСТРАНСТВО</div><h1 id="secondaryTitle">Моя библиотека</h1><p id="secondarySubtitle">Созданные расширения всегда под рукой.</p></div><button class="secondary-cta" id="secondaryAction" type="button"><span>✳</span> Создать расширение</button></div>
+          <div class="secondary-toolbar"><span id="secondaryCount">0 расширений</span><span class="toolbar-hint">Сохраняются в этом браузере</span></div>
+          <div class="library-grid" id="libraryGrid"></div>
+          <div class="empty-library" id="emptyLibrary" hidden><div class="empty-art"><span class="empty-block block-one"></span><span class="empty-block block-two"></span><span class="empty-block block-three"></span><span class="empty-spark">✦</span></div><h2>Здесь появятся ваши расширения</h2><p>Создайте первое расширение или выберите готовую идею из шаблонов.</p><button type="button" class="empty-action" data-view="generator">Перейти к генератору <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-icon">✓</span><span id="toastMessage">Готово</span></div>
+
+    <div class="modal-backdrop" id="settingsModal" hidden>
+      <section class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" id="closeModal" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        <div class="modal-emblem"><span>✦</span></div>
+        <div class="modal-eyebrow">НАСТРОЙКА ГЕНЕРАТОРА</div>
+        <h2 id="modalTitle">Подключите свой ИИ</h2>
+        <p class="modal-description">Студия работает сразу — локальные шаблоны доступны без ключа. Чтобы получать индивидуальный код от языковой модели, настройте сервер.</p>
+        <div class="modal-status"><span class="status-dot"></span><span id="modalStatusText">Проверяем подключение…</span></div>
+        <div class="modal-instruction"><div><strong>1. Задайте ключ на сервере</strong><span>Ключ хранится только в окружении сервера — не вставляйте его в браузер.</span></div><code>OPENAI_API_KEY=ваш_ключ npm start</code></div>
+        <div class="modal-instruction"><div><strong>2. Перезапустите приложение</strong><span>Можно выбрать совместимую модель через переменную OPENAI_MODEL.</span></div><code>OPENAI_MODEL=gpt-4o-mini</code></div>
+        <a class="modal-doc-link" href="/README.md" target="_blank" rel="noopener noreferrer">Инструкция проекта <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6m-1-5-9 9"/><path d="M18 13v6H5V6h6"/></svg></a>
+        <button type="button" class="modal-done" id="modalDone">Понятно</button>
+      </section>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
